@@ -17,16 +17,21 @@ public class IntIterable implements Iterable<Integer> {
         return new IntIterator();
     }
 
+    private int index = 0 ;
+
     private class IntIterator implements Iterator<Integer> {
 
         public boolean hasNext() {
             //TODO: You task is implement this method
-            return false;
+            return index < backed.length;
         }
 
         public Integer next() {
             //TODO: You task is implement this method
-            return null;
+            if (hasNext())
+                return backed[index++];
+            else
+                throw new NoSuchElementException ();
         }
 
         public void remove() {
